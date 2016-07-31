@@ -1,24 +1,18 @@
 ﻿Imports Bwl.Framework
 
-Public Class App
-    Inherits FormAppBase
-    Private _service As New SmartHomeService(_storage, _logger, AppBase.DataFolder)
+Module App
+    Private _app As New AppBase
+    Private _service As New SmartHomeService(_app.RootStorage, _app.RootLogger, _app.DataFolder, _app.AutoUI)
 
-    Private Sub App_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Public Sub Main()
+        Dim startThread As New Threading.Thread(Sub() Start())
+        startThread.Start()
+        Application.EnableVisualStyles()
+        Application.Run(AutoUIForm.Create(_app))
     End Sub
 
-    Private Sub startTimer_Tick(sender As Object, e As EventArgs) Handles startTimer.Tick
-        startTimer.Enabled = False
-        _logger.AddMessage("Starting...")
+    Public Sub Start()
+        Threading.Thread.Sleep(1000)
         _service.Start()
     End Sub
-
-    Private Sub _stateTimer_Tick(sender As Object, e As EventArgs) Handles _stateTimer.Tick
-        GlobalStates.SetState(_service.SmartHome, "SmartObjects", _service.SmartHome.Objects.Count.ToString, "", 10)
-
-        Dim text = GlobalStates.ToString
-        statesTextBox.Text = text
-        statesTextBox.Refresh()
-    End Sub
-End Class
+End Module

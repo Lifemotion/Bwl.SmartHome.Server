@@ -1,3 +1,4 @@
 ﻿Public Class SmartHome
-    Public ReadOnly Property Objects As New List(Of SmartObject)
+    Public Property Objects As ISmartObjects
+
 End Class

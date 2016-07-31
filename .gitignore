@@ -4,6 +4,9 @@ debug
 output
 obj
 bin
+conf
+data
+logs
 *.suo
 local-*
 *.psess

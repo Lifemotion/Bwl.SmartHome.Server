@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D005C2B3-B806-4440-BFDF-1C70EBEEEE7A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Bwl.SmartHome.Server.My.MyApplication</StartupObject>
+    <StartupObject>Sub Main</StartupObject>
     <RootNamespace>Bwl.SmartHome.Server</RootNamespace>
     <AssemblyName>Bwl.SmartHome.Server</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\debug\Bwl SmartHome Server\bin\</OutputPath>
     <DocumentationFile>Bwl.SmartHome.Server.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
@@ -29,7 +29,7 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\debug\Bwl SmartHome Server\bin\</OutputPath>
     <DocumentationFile>Bwl.SmartHome.Server.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
@@ -47,7 +47,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bwl.Framework">
-      <HintPath>..\refs\Bwl.Framework.dll</HintPath>
+      <HintPath>..\refs\bwl-framework-netclient-remoting\Bwl.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="bwl.Network.ClientServer, Version=1.0.15174.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\refs\bwl-framework-netclient-remoting\bwl.Network.ClientServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -74,13 +78,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="App.Designer.vb">
-      <DependentUpon>App.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -96,12 +93,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="App.vb" />
+    <Compile Include="SmartHomeNetServer.vb" />
     <Compile Include="SmartHomeService.vb" />
+    <Compile Include="SmartObjectsServer.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="App.resx">
-      <DependentUpon>App.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -124,10 +121,6 @@
     <ProjectReference Include="..\Bwl.SmartHome.Common\Bwl.SmartHome.Common.vbproj">
       <Project>{31ade57c-eb6d-45b2-9106-10e579def3c9}</Project>
       <Name>Bwl.SmartHome.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bwl.SmartHome.Server.Net\Bwl.SmartHome.Server.Net.vbproj">
-      <Project>{4106b1b3-680f-4439-b681-8f49eff437c7}</Project>
-      <Name>Bwl.SmartHome.Server.Net</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
