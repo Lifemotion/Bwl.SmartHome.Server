@@ -1,0 +1,10 @@
+.vs
+release
+debug
+output
+obj
+bin
+*.suo
+local-*
+*.psess
+*.vspx
