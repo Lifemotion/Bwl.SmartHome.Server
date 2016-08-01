@@ -12,7 +12,6 @@ Public Class SmartObjectConfig
     <DataMember> Public Property Groups As String() = {}
     <DataMember> Public Property InterfaceGuid As String = ""
     <DataMember> Public Property OtherParameters As String = ""
-    <DataMember> Public Property Registered As Boolean
 
     Public Sub New()
         Dim rnd As New Random

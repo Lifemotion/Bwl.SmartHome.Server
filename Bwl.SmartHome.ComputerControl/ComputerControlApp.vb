@@ -62,8 +62,8 @@ Public Class ComputerControlApp
                 If state.ID = "shutdown" Then
                     If state.ValueChanged = True Then
                         changed = True
-                        If state.Value = "1" Then
-                            Shell("shutdown -t 60")
+                        If state.Value > "" Then
+                            Shell("shutdown /s /t 60")
                             state.Value = ""
                         End If
                         state.ValueChanged = False
