@@ -1,15 +1,19 @@
 ﻿Imports Bwl.Framework
+Imports Microsoft.Win32
 
 Public Class ComputerControlApp
     Inherits FormAppBase
     Private _client As New SmartHomeClient(_storage, _logger)
     Private _guid As New StringSetting(_storage, "ComputerObjectGuid", GuidTool.GuidToString)
     Private _computerObject As SmartObject
+    Private _autostartSetting As New BooleanSetting(_storage, "Autostart", False)
     Dim muteState As New SmartState
     Dim blackscreenState As New SmartState
     Dim shutdownState As New SmartState
 
     Private Sub ComputerControlApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
         _computerObject = New SmartObject(_guid.Value)
         _computerObject.Config.Caption = "Компьютер " + _guid.Value
         _computerObject.Config.Category = SmartObjectCategory.generic
@@ -75,5 +79,21 @@ Public Class ComputerControlApp
                 _client.SmartHome.Objects.SetObject(_computerObject, SmartObjectSetMask.statesAll)
             End If
         End If
+    End Sub
+
+    Private Sub ComputerControlApp_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If e.CloseReason = CloseReason.UserClosing Then
+            e.Cancel = True
+            Hide()
+        End If
+        If _autostartSetting.Value Then
+            Dim rkey As RegistryKey = Registry.CurrentUser.CreateSubKey("Software\Microsoft\Windows\CurrentVersion\Run")
+            rkey.SetValue("SmartHome ComputerControl", Application.ExecutablePath)
+        End If
+    End Sub
+
+    Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
+        Me.Hide()
+        Me.Show()
     End Sub
 End Class

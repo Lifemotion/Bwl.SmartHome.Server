@@ -45,6 +45,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Connexion rВseau v2.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bwl.Framework">
       <HintPath>..\refs\bwl-framework-netclient-remoting\Bwl.Framework.dll</HintPath>
@@ -129,6 +132,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connexion rВseau v2.ico" />
     <Content Include="nircmdc.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
