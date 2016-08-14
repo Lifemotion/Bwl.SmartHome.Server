@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Bwl SmartHome Objects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="control.css" rel="stylesheet" />
+    <link href="/libs/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <script src="/libs/jquery-1.11.3.js"></script>
+    <script src="/libs/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="control.js"></script>
+</head>
+<body>
+
+    <div data-role="page" id="objects" data-theme="a">
+        <div data-role="header" data-position="fixed">
+            <h1>Умный дом - Управление</h1>
+            <a href="#main" data-direction="reverse" data-icon="home" data-iconpos="notext" class="homeButton">&nbsp;</a>
+        </div>
+
+        <div data-role="content">
+            <ul data-role="listview" id="objectsList" data-theme="a" data-inset="true">
+                <li class="template objectItem">
+                    <span class="objectText">Название обьекта</span>
+                    <div class="states"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="onOffState template">
+            <label>
+                <input class="checkbox inactive" type="checkbox" data-role="none"><span class="text">Да\нет</span>
+            </label>
+        </div>
+
+        <div class="buttonState template">
+            <input class="button inactive" type="button" data-role="none">
+
+        </div>
+    </div>
+</body>
+</html>

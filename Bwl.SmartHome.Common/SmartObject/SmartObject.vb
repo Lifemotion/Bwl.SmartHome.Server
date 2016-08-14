@@ -1,6 +1,11 @@
 ﻿Imports System.Runtime.Serialization
 Imports Bwl.SmartHome
 
+<CollectionDataContract>
+Public Class SmartObjectsList
+    Inherits List(Of SmartObject)
+End Class
+
 <DataContract>
 Public Class SmartObject
 
