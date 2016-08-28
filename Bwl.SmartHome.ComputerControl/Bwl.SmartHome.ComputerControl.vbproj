@@ -46,7 +46,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Connexion rВseau v2.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bwl.Framework">
@@ -80,11 +80,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComputerControlApp.vb">
-      <SubType>Form</SubType>
+    <Compile Include="ComputerControlForm.Designer.vb">
+      <DependentUpon>ComputerControlForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="ComputerControlApp.Designer.vb">
-      <DependentUpon>ComputerControlApp.vb</DependentUpon>
+    <Compile Include="ComputerControlForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -104,8 +103,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ComputerControlApp.resx">
-      <DependentUpon>ComputerControlApp.vb</DependentUpon>
+    <EmbeddedResource Include="ComputerControlForm.resx">
+      <DependentUpon>ComputerControlForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -132,7 +131,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Connexion rВseau v2.ico" />
+    <Content Include="icon.ico" />
     <Content Include="nircmdc.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

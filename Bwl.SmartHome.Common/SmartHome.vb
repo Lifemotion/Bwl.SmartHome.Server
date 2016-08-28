@@ -1,4 +1,4 @@
 ﻿Public Class SmartHome
-    Public Property Objects As ISmartObjects
+    Public Property Objects As ISmartObjectsCollection
 
 End Class

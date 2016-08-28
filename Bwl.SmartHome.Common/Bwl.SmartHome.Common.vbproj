@@ -51,7 +51,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -71,13 +73,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NetClient\RemoteSmartObjects.vb" />
+    <Compile Include="NetClient\SmartHomeClientBase.Designer.vb">
+      <DependentUpon>SmartHomeClientBase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NetClient\SmartHomeClientBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Scripts\Script.vb" />
     <Compile Include="Scripts\SmartHomeScripts.vb" />
     <Compile Include="NetClient\SmartHomeClient.vb" />
-    <Compile Include="SmartObject\ISmartObjects.vb" />
-    <Compile Include="SmartObject\SmartObjectSetMask.vb" />
-    <Compile Include="SmartObject\State\SmartState.vb" />
-    <Compile Include="SmartObject\State\SmartStateType.vb" />
+    <Compile Include="SmartObjectsCollection\ISmartObjectsCollection.vb" />
+    <Compile Include="SmartObject\Scheme\SmartObjectScheme.vb" />
+    <Compile Include="SmartObject\Scheme\SmartStateScheme.vb" />
+    <Compile Include="SmartObject\Scheme\SmartStateType.vb" />
+    <Compile Include="SmartObject\Value\SmartStateValue.vb" />
     <Compile Include="Tools\GuidTool.vb" />
     <Compile Include="Tools\IRemoteObject.vb" />
     <Compile Include="Tools\Serializer.vb" />
@@ -97,10 +106,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Interfaces\ISmartObjectDriver.vb" />
     <Compile Include="SmartObject\SmartObject.vb" />
-    <Compile Include="SmartObject\Config\SmartObjectCategory.vb" />
-    <Compile Include="SmartObject\Config\SmartObjectConfig.vb" />
+    <Compile Include="SmartObject\UserConfig\SmartObjectCategory.vb" />
+    <Compile Include="SmartObject\UserConfig\SmartObjectUserConfig.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -108,6 +116,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NetClient\SmartHomeClientBase.resx">
+      <DependentUpon>SmartHomeClientBase.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

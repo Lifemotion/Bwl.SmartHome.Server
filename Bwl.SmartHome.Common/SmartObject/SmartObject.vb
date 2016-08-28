@@ -10,8 +10,9 @@ End Class
 Public Class SmartObject
 
     <DataMember> Public Property Guid As String = ""
-    <DataMember> Public Property Config As New SmartObjectConfig
-    <DataMember> Public Property States As New List(Of SmartState)
+    <DataMember> Public Property UserConfig As New SmartObjectUserConfig
+    <DataMember> Public Property Scheme As New SmartObjectScheme
+    <DataMember> Public Property StateValues As New List(Of SmartStateValue)
 
     <IgnoreDataMember> Public Property LastUpdated As DateTime
 
@@ -26,65 +27,45 @@ Public Class SmartObject
     Public Sub LoadConfig(configFile As String)
         If IO.File.Exists(configFile) Then
             Try
-                _Config = Serializer.LoadObjectFromJsonFile(Of SmartObjectConfig)(configFile)
+                _UserConfig = Serializer.LoadObjectFromJsonFile(Of SmartObjectUserConfig)(configFile)
             Catch ex As Exception
             End Try
         End If
     End Sub
 
-    Public Sub SetObject(newObj As SmartObject, mask As SmartObjectSetMask)
-        If Guid <> newObj.Guid Then Throw New Exception("Cannot set SmartObject from object with different Guid")
-        LastUpdated = Now
-        If mask And SmartObjectSetMask.configAll Then
-            _Config = newObj.Config
-        End If
-        If mask And SmartObjectSetMask.statesAll Then
-            _States = newObj.States
-        End If
-        If mask And SmartObjectSetMask.configOnlyReplaceEmpty Then
-            If Config.Caption = "" Then Config.Caption = newObj.Config.Caption
-            If Config.Category = SmartObjectCategory.generic Then Config.Category = newObj.Config.Category
-            If Config.ClassID = "" Then Config.ClassID = newObj.Config.ClassID
-            If Config.Groups Is Nothing OrElse Config.Groups.Length = 0 Then Config.Groups = newObj.Config.Groups
-            If Config.InterfaceGuid = "" Then Config.InterfaceGuid = newObj.Config.InterfaceGuid
-            If Config.Location = "" Then Config.Location = newObj.Config.Location
-            If Config.OtherParameters = "" Then Config.OtherParameters = newObj.Config.OtherParameters
-            If Config.ShortName = "" Then Config.ShortName = newObj.Config.ShortName
-        End If
-        If mask And SmartObjectSetMask.statesOnlyReplaceEmpty Then
-            For Each newState In newObj.States
-                Dim found As SmartState = Nothing
-                For Each oldState In States
-                    If oldState.ID = newState.ID Then found = oldState
-                Next
-                If found Is Nothing Then
-                    found = New SmartState
-                    found.ID = newState.ID
-                    States.Add(found)
-                End If
-                If found.Value = "" Then
-                    found.Caption = newState.Caption
-                    found.Type = newState.Type
-                    found.Value = newState.Value
+    Public Sub SetStateValue(stateId As String, value As String)
+        Dim state = Scheme.GetStateScheme(stateId)
+        If state IsNot Nothing Then
+            For Each stateVal In StateValues
+                If stateVal.ID.ToLower = stateId.ToLower Then
+                    stateVal.Value = value
+                    stateVal.Updated = Now
+                    Exit For
                 End If
             Next
+            Dim newState As New SmartStateValue
+            newState.ID = stateId
+            newState.Value = value
+            StateValues.Add(newState)
         End If
-    End Sub
-
-    Public Sub SetStateValue(stateId As String, value As String)
-        For Each state In States
-            If state.ID = stateId Then
-                state.Value = value
-            End If
-        Next
     End Sub
 
     Public Function GetStateValue(stateId As String) As String
-        For Each state In States
-            If state.ID = stateId Then
-                Return state.Value
-            End If
-        Next
-        Return ""
+        Dim state = Scheme.GetStateScheme(stateId)
+        If state IsNot Nothing Then
+            For Each stateVal In StateValues
+                If stateVal.ID.ToLower = stateId.ToLower Then
+                    stateVal.Requested = Now
+                    Return stateVal.Value
+                End If
+            Next
+            Dim newState As New SmartStateValue
+            newState.ID = stateId
+            newState.Value = ""
+            StateValues.Add(newState)
+            Return newState.Value
+        Else
+            Return ""
+        End If
     End Function
 End Class

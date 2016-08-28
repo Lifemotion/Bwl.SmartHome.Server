@@ -14,8 +14,8 @@ Public Class SmartHomeService
         _dataFolder = dataFolder
         _ui = ui
         Dim form As New AutoFormDescriptor(_ui, "SmartHomeForm") With {.Text = "SmartHome Server", .LoggerExtended = False, .FormHeight = 400}
+        _smartHome.Objects = New SmartObjectsCollection(IO.Path.Combine(dataFolder, "objects"))
         _netServer = New SmartHomeNetServer(storage, logger, _smartHome)
-        _smartHome.Objects = New SmartObjectsServer(IO.Path.Combine(dataFolder, "objects"))
     End Sub
 
     Public Sub Start()

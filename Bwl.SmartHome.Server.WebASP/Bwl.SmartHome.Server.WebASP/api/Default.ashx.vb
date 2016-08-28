@@ -30,19 +30,20 @@ Public Class _Default1
     End Sub
 
     Private Sub SetObjectState(guid As String, stateid As String, value As String)
-        Global_asax.SmartHomeClient.SmartHome.Objects.SetStateValue(guid, stateid, value)
+        Global_asax.SmartHomeClient.SmartHome.Objects.SetValue(guid, stateid, value, ChangedBy.user)
     End Sub
 
     Private Function GetAllObjectsJsonHash() As String
         Dim hash As Long
-        Dim objList = Global_asax.SmartHomeClient.SmartHome.Objects.GetObjectList
-        For Each id In objList.Split(",")
-            Dim obj = Global_asax.SmartHomeClient.SmartHome.Objects.GetObject(id)
+        Dim objs As New SmartObjectsList
+        objs.AddRange(Global_asax.SmartHomeClient.SmartHome.Objects.GetObjects(""))
+
+        For Each obj In objs
             For Each ch In obj.Guid
                 hash += Asc(ch)
             Next
             If obj IsNot Nothing Then
-                For Each state In obj.States
+                For Each state In obj.StateValues
                     For Each ch In state.Value
                         hash += Asc(ch)
                     Next
@@ -54,10 +55,7 @@ Public Class _Default1
 
     Private Function GetAllObjectsJson() As String
         Dim objs As New SmartObjectsList
-        Dim objList = Global_asax.SmartHomeClient.SmartHome.Objects.GetObjectList
-        For Each id In objList.Split(",")
-            objs.Add(Global_asax.SmartHomeClient.SmartHome.Objects.GetObject(id))
-        Next
+        objs.AddRange(Global_asax.SmartHomeClient.SmartHome.Objects.GetObjects(""))
         Dim text = Serializer.SaveObjectToJsonString(objs)
         Return text
     End Function

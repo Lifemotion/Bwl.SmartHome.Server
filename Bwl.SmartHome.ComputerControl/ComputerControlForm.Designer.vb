@@ -1,5 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class ComputerControlApp
+Partial Class ComputerControlForm
+
     'Форма переопределяет dispose для очистки списка компонентов.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
@@ -20,44 +21,23 @@ Partial Class ComputerControlApp
     'Не изменяйте ее в редакторе исходного кода.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ComputerControlApp))
-        Me.setObjects = New System.Windows.Forms.Timer(Me.components)
-        Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ComputerControlForm))
         Me.SuspendLayout()
         '
         'logWriter
         '
-        Me.logWriter.ExtendedView = False
-        Me.logWriter.Location = New System.Drawing.Point(0, 26)
-        Me.logWriter.Size = New System.Drawing.Size(423, 192)
+        Me.logWriter.Location = New System.Drawing.Point(2, 53)
         '
-        'setObjects
-        '
-        Me.setObjects.Enabled = True
-        Me.setObjects.Interval = 3000
-        '
-        'NotifyIcon1
-        '
-        Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
-        Me.NotifyIcon1.Text = "SmartHome Computer Control"
-        Me.NotifyIcon1.Visible = True
-        '
-        'ComputerControlApp
+        'ComputerControlForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(423, 216)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.ClientSize = New System.Drawing.Size(517, 287)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
-        Me.Name = "ComputerControlApp"
+        Me.Name = "ComputerControlForm"
         Me.Text = "Bwl SmartHome ComputerControl"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents setObjects As Timer
-    Friend WithEvents NotifyIcon1 As NotifyIcon
 End Class

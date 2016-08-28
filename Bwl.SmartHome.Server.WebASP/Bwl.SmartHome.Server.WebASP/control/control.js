@@ -12,18 +12,22 @@ function reloadObjects() {
          	for (var i = 0; i < objects.length; i++) {
          		var obj = objects[i];
          		var guid = obj.Guid;
-         		var caption = obj.Config.Caption;
+         		var caption = obj.Scheme.DefaultCaption;
 
          		var tmpl = $(".objectItem.template").clone().show();
          		tmpl.removeClass("template").addClass("created").appendTo("#objectsList");
          		tmpl.find(".objectText").html(caption);
          		tmpl.addClass("id_" + guid)
-         		for (var k = 0; k < obj.States.length; k++) {
-         			var state = obj.States[k];
+         		for (var k = 0; k < obj.Scheme.States.length; k++) {
+         			var state = obj.Scheme.States[k];
          			var stateId = state.ID;
-         			var stateCaption = state.Caption;
+         			var stateCaption = state.DefaultCaption;
          			var stateType = state.Type;
-         			var stateValue = state.Value;
+         			var stateValue = "";
+         			for (var m = 0; m < obj.StateValues.length; m++)
+         			{
+         				if (obj.StateValues[m].ID = stateId) { stateValue = obj.StateValues[m].Value}
+         			}
          			switch (stateType) {
          				case 3:
          					var stt = $(".onOffState.template").clone();
