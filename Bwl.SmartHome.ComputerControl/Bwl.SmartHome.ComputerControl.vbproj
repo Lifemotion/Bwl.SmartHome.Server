@@ -26,9 +26,9 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
-    <DefineDebug>false</DefineDebug>
+    <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>..\release\Bwl SmartHome Computer Control\bin\</OutputPath>
     <DocumentationFile>Bwl.SmartHome.ComputerControl.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
@@ -54,6 +54,9 @@
     </Reference>
     <Reference Include="bwl.Network.ClientServer">
       <HintPath>..\refs\bwl-framework-netclient-remoting\bwl.Network.ClientServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MouseKeyboardActivityMonitor">
+      <HintPath>..\..\Bwl.SmartHome.AVR\refs\MouseKeyboardActivityMonitor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -87,6 +90,7 @@
       <DependentUpon>ComputerControlApp.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Keymon.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

@@ -7,6 +7,7 @@ Public Class ComputerControlApp
     Private _guid As New StringSetting(_storage, "ComputerObjectGuid", GuidTool.GuidToString)
     Private _computerObject As SmartObject
     Private _autostartSetting As New BooleanSetting(_storage, "Autostart", False)
+    Private _keymon As New Keymon(_client, IO.Path.Combine(AppBase.DataFolder, "rules.txt"))
     Dim muteState As New SmartState
     Dim blackscreenState As New SmartState
     Dim shutdownState As New SmartState
