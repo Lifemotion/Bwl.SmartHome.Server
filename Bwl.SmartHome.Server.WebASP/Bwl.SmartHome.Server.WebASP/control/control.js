@@ -26,12 +26,12 @@ function reloadObjects() {
          			var stateValue = "";
          			for (var m = 0; m < obj.StateValues.length; m++)
          			{
-         				if (obj.StateValues[m].ID = stateId) { stateValue = obj.StateValues[m].Value}
+         				if (obj.StateValues[m].ID == stateId) { stateValue = obj.StateValues[m].Value}
          			}
          			switch (stateType) {
          				case 3:
          					var stt = $(".onOffState.template").clone();
-         					stt.removeClass("template").addClass("created").appendTo(".id_" + guid + " .states");
+         					stt.removeClass("template").addClass("created").addClass("stateid_"+stateId).appendTo(".id_" + guid + " .states");
          					stt.find(".text").html(stateCaption);
          					var checkbox = stt.find(".checkbox.inactive");
          					if (stateValue == "on") {
@@ -53,7 +53,7 @@ function reloadObjects() {
          					break;
          				case 2:
          					var stt = $(".buttonState.template").clone();
-         					stt.removeClass("template").addClass("created").appendTo(".id_" + guid + " .states");
+         					stt.removeClass("template").addClass("created").addClass("stateid_" + stateId).appendTo(".id_" + guid + " .states");
          					var button = stt.find(".button.inactive");
          					button.val(stateCaption).removeAttr("data-role").removeClass("inactive").button();
          					(function (_guid, _stateId) {

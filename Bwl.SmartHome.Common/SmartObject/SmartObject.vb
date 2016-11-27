@@ -45,7 +45,7 @@ Public Class SmartObject
                     End If
                     stateVal.Value = value
                     stateVal.Updated = Now
-                    Exit For
+                    Return
                 End If
             Next
             Dim newState As New SmartStateValue
