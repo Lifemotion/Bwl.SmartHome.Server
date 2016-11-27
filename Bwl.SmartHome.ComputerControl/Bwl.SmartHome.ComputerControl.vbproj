@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>Bwl.SmartHome.ComputerControl.My.MyApplication</StartupObject>
     <RootNamespace>Bwl.SmartHome.ComputerControl</RootNamespace>
-    <AssemblyName>Bwl.SmartHome.ComputerControl</AssemblyName>
+    <AssemblyName>SmartHome-ComputerControl</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -20,7 +20,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>..\debug\Bwl SmartHome Computer Control\bin\</OutputPath>
-    <DocumentationFile>Bwl.SmartHome.ComputerControl.xml</DocumentationFile>
+    <DocumentationFile>SmartHome-ComputerControl.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -30,8 +30,9 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>false</Optimize>
     <OutputPath>..\release\Bwl SmartHome Computer Control\bin\</OutputPath>
-    <DocumentationFile>Bwl.SmartHome.ComputerControl.xml</DocumentationFile>
+    <DocumentationFile>SmartHome-ComputerControl.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>

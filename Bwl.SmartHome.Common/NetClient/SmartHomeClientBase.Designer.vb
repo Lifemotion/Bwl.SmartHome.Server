@@ -35,7 +35,7 @@ Partial Class SmartHomeClientBase
         'niTray
         '
         Me.niTray.Icon = CType(resources.GetObject("niTray.Icon"), System.Drawing.Icon)
-        Me.niTray.Text = "SmartHome Computer Control"
+        Me.niTray.Text = "SmartHome"
         Me.niTray.Visible = True
         '
         'SmartHomeClientBase
@@ -52,5 +52,5 @@ Partial Class SmartHomeClientBase
 
     End Sub
 
-    Friend WithEvents niTray As Windows.Forms.NotifyIcon
+    Public WithEvents niTray As Windows.Forms.NotifyIcon
 End Class

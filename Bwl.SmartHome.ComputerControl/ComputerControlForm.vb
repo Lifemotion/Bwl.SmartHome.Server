@@ -22,6 +22,8 @@ Public Class ComputerControlForm
         AddHandler _client.SendObjectsSchemesTimer, AddressOf SendObjectsTimerHandler
         _client.SendObjectsTimerHandler()
         Text += " " + Application.ProductVersion
+        niTray.Text = "BWL SH: ComputerControl"
+        niTray.Icon = Me.Icon
 #If Not DEBUG Then
         Dim invisible As New Threading.Thread(Sub() Me.Invoke(Sub() Hide()))
         invisible.Start()
