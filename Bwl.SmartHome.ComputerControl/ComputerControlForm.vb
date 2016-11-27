@@ -9,6 +9,7 @@ Public Class ComputerControlForm
     Private _blackscreenState As New SmartStateScheme("blackscreen", SmartStateType.actionButton, "Отключить экран")
     Private _shutdownState As New SmartStateScheme("shutdown", SmartStateType.actionButton, "Завершение работы")
     Private _keyMon As New Keymon(_client, AppBase.DataFolder + "\rules.txt")
+
     Private Sub ComputerControlApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _computerObjectScheme.ClassID = "BwlComputerControlApp"
         _computerObjectScheme.DefaultCaption = "Компьютер " + My.Computer.Name
@@ -20,6 +21,11 @@ Public Class ComputerControlForm
         AddHandler _client.SmartHome.Objects.StateChanged, AddressOf StateChangedHandler
         AddHandler _client.SendObjectsSchemesTimer, AddressOf SendObjectsTimerHandler
         _client.SendObjectsTimerHandler()
+        Text += " " + Application.ProductVersion
+#If Not DEBUG Then
+        Dim invisible As New Threading.Thread(Sub() Me.Invoke(Sub() Hide()))
+        invisible.Start()
+#End If
     End Sub
 
     Private Sub SendObjectsTimerHandler()
