@@ -37,7 +37,11 @@ Public Class Keymon
                 Dim parts = rule.Split(",")
                 If parts.Length = 4 Then
                     If parts(0) = e.KeyCode.ToString Then
-                        _client.SmartHome.Objects.SetStateValue(parts(1), parts(2), parts(3))
+                        Try
+                            _client.SmartHome.Objects.SetValue(parts(1), parts(2), parts(3), ChangedBy.user)
+                        Catch ex As Exception
+                            '_client.
+                        End Try
                     End If
                 End If
             Next

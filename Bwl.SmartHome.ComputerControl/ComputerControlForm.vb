@@ -8,7 +8,7 @@ Public Class ComputerControlForm
     Private _muteState As New SmartStateScheme("mute", SmartStateType.actionOnOff, "Отключить звук")
     Private _blackscreenState As New SmartStateScheme("blackscreen", SmartStateType.actionButton, "Отключить экран")
     Private _shutdownState As New SmartStateScheme("shutdown", SmartStateType.actionButton, "Завершение работы")
-
+    Private _keyMon As New Keymon(_client, AppBase.DataFolder + "\rules.txt")
     Private Sub ComputerControlApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _computerObjectScheme.ClassID = "BwlComputerControlApp"
         _computerObjectScheme.DefaultCaption = "Компьютер " + My.Computer.Name

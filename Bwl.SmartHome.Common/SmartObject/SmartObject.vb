@@ -33,11 +33,16 @@ Public Class SmartObject
         End If
     End Sub
 
-    Public Sub SetStateValue(stateId As String, value As String)
+    Public Sub SetStateValue(stateId As String, ByRef value As String)
         Dim state = Scheme.GetStateScheme(stateId)
         If state IsNot Nothing Then
             For Each stateVal In StateValues
                 If stateVal.ID.ToLower = stateId.ToLower Then
+                    If state.Type = SmartStateType.actionOnOff Then
+                        If value.ToLower = "toggle" Then
+                            If stateVal.Value = "off" Then value = "on" Else value = "off"
+                        End If
+                    End If
                     stateVal.Value = value
                     stateVal.Updated = Now
                     Exit For

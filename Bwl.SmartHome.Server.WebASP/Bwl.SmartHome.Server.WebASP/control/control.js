@@ -83,12 +83,12 @@ function startChangesMonitor() {
 	 		reloadObjects();
 	 	}
 	 });
-	}, 3000);
+	}, 1000);
 }
 
 $("document").ready(function () {
 	$(".objectItem.template").hide();
-	//reloadObjects();
+	reloadObjects();
 	startChangesMonitor();
 });
 
