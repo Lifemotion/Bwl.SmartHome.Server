@@ -31,8 +31,8 @@ Public Class Keymon
         If e.KeyCode = Keys.LControlKey Then _control = True
 
         If _shift And _control And e.KeyCode <> Keys.LShiftKey And e.KeyCode <> Keys.LControlKey Then
-            _shift = False
-            _control = False
+            '_shift = False
+            '_control = False
             For Each rule In _rules
                 Dim parts = rule.Split(",")
                 If parts.Length = 4 Then
