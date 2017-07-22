@@ -54,7 +54,7 @@ Public Class RemoteSmartObjects
     End Sub
 
     Public Function GetValue(objGuid As String, stateId As String) As String Implements ISmartObjectsCollection.GetValue
-        Dim msg As New NetMessage("S", "SmartObjects", "SetStateValue", objGuid, stateId)
+        Dim msg As New NetMessage("S", "SmartObjects", "GetStateValue", objGuid, stateId)
         msg.ToID = _client.TargetSetting.Value
         Dim result = _client.SendMessageWaitAnswer(msg, "GetStateValueResult")
         Return result.Part(1)

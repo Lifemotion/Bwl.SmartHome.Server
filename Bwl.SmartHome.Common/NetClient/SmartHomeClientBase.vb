@@ -17,10 +17,16 @@ Public Class SmartHomeClientBase
             Dim rkey As RegistryKey = Registry.CurrentUser.CreateSubKey("Software\Microsoft\Windows\CurrentVersion\Run")
             rkey.SetValue("SmartHome ComputerControl", Application.ExecutablePath)
         End If
+
     End Sub
 
     Private Sub niTray_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles niTray.MouseDoubleClick
         Me.Hide()
         Me.Show()
     End Sub
+
+    Private Sub bLocalDebug_Click(sender As Object, e As EventArgs) Handles bLocalDebug.Click
+        _client.StartLocalDebug()
+    End Sub
+
 End Class

@@ -96,7 +96,6 @@
     <Compile Include="App.vb" />
     <Compile Include="Service\SmartHomeNetServer.vb" />
     <Compile Include="Local\SmartHomeService.vb" />
-    <Compile Include="Local\SmartObjectsCollection.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

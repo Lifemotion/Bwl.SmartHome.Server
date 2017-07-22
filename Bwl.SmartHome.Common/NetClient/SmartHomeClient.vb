@@ -9,6 +9,7 @@ Public Class SmartHomeClient
     Private _sendObjectsTimer As New System.Timers.Timer
     Private _logger As Logger
     Private WithEvents _client As MessageTransport
+    Private _localMode As Boolean
 
     Public Sub New(rootStorage As SettingsStorage, rootLogger As Logger)
         Dim rnd As New Random
@@ -27,7 +28,7 @@ Public Class SmartHomeClient
     End Sub
 
     Public Sub SendObjectsTimerHandler()
-        If _client IsNot Nothing AndAlso _client.IsConnected Then
+        If (_client IsNot Nothing AndAlso _client.IsConnected) Or _localMode Then
             RaiseEvent SendObjectsSchemesTimer()
         End If
     End Sub
@@ -37,4 +38,15 @@ Public Class SmartHomeClient
             Return _client
         End Get
     End Property
+
+    Public Sub StartLocalDebug()
+        SmartHome = New SmartHome
+        SmartHome.Objects = New SmartObjectsCollection(".")
+        RaiseEvent SendObjectsSchemesTimer()
+        Dim form As New SmartHomeDebugger
+        form.SmartHome = SmartHome
+        form.Show()
+        _client.AutoConnect = False
+        _localMode = True
+    End Sub
 End Class
