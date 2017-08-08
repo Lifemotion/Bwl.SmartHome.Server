@@ -60,7 +60,7 @@ Public Class ComputerControlForm
 
             If stateId = _blackscreenState.ID Then
                 If currentValue = "1" Then
-                    'Shell("nircmdc monitor off")
+                    Shell("nircmdc monitor off")
                     _client.SmartHome.Objects.SetValue(objGuid, stateId, "0", ChangedBy.device)
                 End If
             End If
