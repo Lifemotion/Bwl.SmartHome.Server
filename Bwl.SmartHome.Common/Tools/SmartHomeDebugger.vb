@@ -45,10 +45,18 @@
                     Else
                         SmartHome.Objects.SetValue(_selectedGuid, id, "off", ChangedBy.user)
                     End If
+                Case "stateYesNo"
+                    If value = "no" Then
+                        SmartHome.Objects.SetValue(_selectedGuid, id, "yes", ChangedBy.user)
+                    Else
+                        SmartHome.Objects.SetValue(_selectedGuid, id, "no", ChangedBy.user)
+                    End If
                 Case "actionButton"
                     SmartHome.Objects.SetValue(_selectedGuid, id, "1", ChangedBy.user)
                 Case "actionString"
-
+                    SmartHome.Objects.SetValue(_selectedGuid, id, InputBox("actionString value:"), ChangedBy.user)
+                Case "stateString"
+                    SmartHome.Objects.SetValue(_selectedGuid, id, InputBox("stateString value:"), ChangedBy.user)
             End Select
             bUpdateSelectedObject_Click(Nothing, Nothing)
 
@@ -57,5 +65,10 @@
 
     Private Sub SmartHomeDebugger_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         bObjectsUpdate_Click(Nothing, Nothing)
+    End Sub
+
+    Private Sub tRefresh_Tick(sender As Object, e As EventArgs) Handles tRefresh.Tick
+        bObjectsUpdate_Click(Nothing, Nothing)
+        bUpdateSelectedObject_Click(Nothing, Nothing)
     End Sub
 End Class

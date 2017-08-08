@@ -8,6 +8,10 @@ Public Class ComputerControlForm
     Private _muteState As New SmartStateScheme("mute", SmartStateType.actionOnOff, "Отключить звук")
     Private _blackscreenState As New SmartStateScheme("blackscreen", SmartStateType.actionButton, "Отключить экран")
     Private _shutdownState As New SmartStateScheme("shutdown", SmartStateType.actionButton, "Завершение работы")
+    Private _paramtersState As New SmartStateScheme("parameters", SmartStateType.actionString, "Параметры")
+    Private _stateState As New SmartStateScheme("state", SmartStateType.stateString, "Состояние")
+    Private _activityState As New SmartStateScheme("activity", SmartStateType.stateYesNo, "Активность")
+
     Private _keyMon As New Keymon(_client, AppBase.DataFolder + "\rules.txt")
 
     Private Sub ComputerControlApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -18,6 +22,9 @@ Public Class ComputerControlForm
         _computerObjectScheme.States.Add(_muteState)
         _computerObjectScheme.States.Add(_blackscreenState)
         _computerObjectScheme.States.Add(_shutdownState)
+        _computerObjectScheme.States.Add(_paramtersState)
+        _computerObjectScheme.States.Add(_stateState)
+        _computerObjectScheme.States.Add(_activityState)
         AddHandler _client.SmartHome.Objects.StateChanged, AddressOf StateChangedHandler
         AddHandler _client.SendObjectsSchemesTimer, AddressOf SendObjectsTimerHandler
         _client.SendObjectsTimerHandler()
@@ -33,6 +40,9 @@ Public Class ComputerControlForm
     Private Sub SendObjectsTimerHandler()
         Try
             _client.SmartHome.Objects.SetScheme(_guid, _computerObjectScheme)
+            _client.SmartHome.Objects.SetValue(_guid, _stateState.ID, "Time: " + Now.ToString, ChangedBy.device)
+            _client.SmartHome.Objects.SetValue(_guid, _activityState.ID, "yes", ChangedBy.device)
+
         Catch ex As Exception
             _logger.AddWarning(ex.Message)
         End Try
@@ -50,7 +60,7 @@ Public Class ComputerControlForm
 
             If stateId = _blackscreenState.ID Then
                 If currentValue = "1" Then
-                    Shell("nircmdc monitor off")
+                    'Shell("nircmdc monitor off")
                     _client.SmartHome.Objects.SetValue(objGuid, stateId, "0", ChangedBy.device)
                 End If
             End If

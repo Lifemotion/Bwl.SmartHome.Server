@@ -42,12 +42,14 @@ Partial Class SmartHomeClientBase
         'bLocalDebug
         '
         Me.bLocalDebug.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.bLocalDebug.Enabled = False
         Me.bLocalDebug.Location = New System.Drawing.Point(393, 27)
         Me.bLocalDebug.Name = "bLocalDebug"
         Me.bLocalDebug.Size = New System.Drawing.Size(112, 23)
         Me.bLocalDebug.TabIndex = 3
         Me.bLocalDebug.Text = "Local Debug"
         Me.bLocalDebug.UseVisualStyleBackColor = True
+        Me.bLocalDebug.Visible = False
         '
         'SmartHomeClientBase
         '

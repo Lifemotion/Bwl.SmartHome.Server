@@ -28,8 +28,48 @@ function reloadObjects() {
          			{
          				if (obj.StateValues[m].ID == stateId) { stateValue = obj.StateValues[m].Value}
          			}
-         			switch (stateType) {
-         				case 3:
+                        switch (stateType) {
+                            case 101: //stateString
+                                var stt = $(".textboxState.template").clone();
+                                stt.removeClass("template").addClass("created").addClass("stateid_" + stateId).appendTo(".id_" + guid + " .states");
+                                stt.find(".text").html(stateCaption);
+                                var textbox = stt.find(".textbox.inactive");
+                                textbox.prop('value', stateValue);
+                                textbox.removeAttr("data-role").removeClass("inactive").textinput();
+                                textbox.textinput('disable');
+                                break;
+                            case 102: //stateYesNo
+                                var stt = $(".onOffState.template").clone();
+                                stt.removeClass("template").addClass("created").addClass("stateid_" + stateId).appendTo(".id_" + guid + " .states");
+                                stt.find(".text").html(stateCaption);
+                                var checkbox = stt.find(".checkbox.inactive");
+                                if (stateValue == "yes") {
+                                    checkbox.prop('checked', true);
+                                }
+
+                                checkbox.removeAttr("data-role").removeClass("inactive").checkboxradio();
+                                checkbox.checkboxradio('disable');
+                                break;
+                            case 1: //actionString
+                                var stt = $(".textboxState.template").clone();
+                                stt.removeClass("template").addClass("created").addClass("stateid_" + stateId).appendTo(".id_" + guid + " .states");
+                                stt.find(".text").html(stateCaption);
+                                var textbox = stt.find(".textbox.inactive");
+                                textbox.prop('value', stateValue);
+                                textbox.removeAttr("data-role").removeClass("inactive").textinput();
+                                //not working yet
+                              /*  (function (_guid, _stateId, _selector) {
+                                    _selector.on("input", function (event) {
+                                        var value = textbox.prop('value');
+                                        textbox.prop('value', "tyete");
+                                        $.post(_apiUrl, {
+                                            act: "set-obj-state", oid: _guid, sid: _stateId, val: value
+                                        }, function (data) {
+                                        });
+                                    });
+                                })(guid, stateId, textbox);*/
+                                break;
+                            case 3: //actionOnOff
          					var stt = $(".onOffState.template").clone();
          					stt.removeClass("template").addClass("created").addClass("stateid_"+stateId).appendTo(".id_" + guid + " .states");
          					stt.find(".text").html(stateCaption);
@@ -51,7 +91,7 @@ function reloadObjects() {
          						});
          					})(guid, stateId, checkbox);
          					break;
-         				case 2:
+                            case 2: //actionButton
          					var stt = $(".buttonState.template").clone();
          					stt.removeClass("template").addClass("created").addClass("stateid_" + stateId).appendTo(".id_" + guid + " .states");
          					var button = stt.find(".button.inactive");
@@ -64,6 +104,7 @@ function reloadObjects() {
          							});
          						});
          					})(guid, stateId);
+
          			}
          		}
          	}

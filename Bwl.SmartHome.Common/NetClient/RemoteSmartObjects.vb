@@ -76,7 +76,10 @@ Public Class RemoteSmartObjects
                     Case "script" : changed = ChangedBy.script
                     Case "device" : changed = ChangedBy.device
                 End Select
-                RaiseEvent StateChanged(message.Part(1), message.Part(2), message.Part(3), message.Part(4), changed)
+                Dim thread As New Threading.Thread(Sub()
+                                                       RaiseEvent StateChanged(message.Part(1), message.Part(2), message.Part(3), message.Part(4), changed)
+                                                   End Sub)
+                thread.Start()
         End Select
     End Sub
 End Class
