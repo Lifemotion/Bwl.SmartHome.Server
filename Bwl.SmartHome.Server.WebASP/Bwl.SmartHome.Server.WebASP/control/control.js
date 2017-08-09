@@ -14,10 +14,16 @@ function reloadObjects() {
          		var guid = obj.Guid;
          		var caption = obj.Scheme.DefaultCaption;
 
-         		var tmpl = $(".objectItem.template").clone().show();
+         		var tmpl = $(".objectItem.template").clone().show();         		
          		tmpl.removeClass("template").addClass("created").appendTo("#objectsList");
          		tmpl.find(".objectText").html(caption);
          		tmpl.addClass("id_" + guid)
+         		if (caption.includes("online")) {
+         		    tmpl.css("background-color", "#E7FFE9");
+         		}
+         		if (caption.includes("offline")) {
+         		    tmpl.css("background-color", "#FFDEDE");
+         		}
          		for (var k = 0; k < obj.Scheme.States.length; k++) {
          			var state = obj.Scheme.States[k];
          			var stateId = state.ID;
