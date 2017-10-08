@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="control\control.css" />
+    <Content Include="control\plugins.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="control\control.js" />
@@ -113,6 +114,7 @@
     <Content Include="libs\jquery.mobile-1.4.5.min.css" />
     <Content Include="libs\jquery.mobile-1.4.5.min.js" />
     <Content Include="control\index.html" />
+    <Content Include="PluginManager.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +150,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PluginManager.aspx.designer.vb">
+      <DependentUpon>PluginManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PluginManager.aspx.vb">
+      <DependentUpon>PluginManager.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -179,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="pics\" />
+    <Folder Include="plugins\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
