@@ -115,6 +115,7 @@
     <Content Include="libs\jquery.mobile-1.4.5.min.js" />
     <Content Include="control\index.html" />
     <Content Include="PluginManager.aspx" />
+    <Content Include="plugins\description.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -188,7 +189,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="pics\" />
-    <Folder Include="plugins\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

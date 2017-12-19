@@ -6,6 +6,111 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFvXGcQE/jESWzLhe2iK0OwAAAAACAAAAAAAQZgAAAAEAACAAAACI/4uZUkuC3ybUZqQkg7hSuSDPE/VasyZebRGQ9PJ37QAAAAAOgAAAAAIAACAAAAABlAndvlk2jzUSdIj80Tqa8Jsof+Oq1zqkzbh3cs0h5SAAAAAIRD8bcZOO4hKzpSmSEBovhtg+SPy8YYiyokTh/hiJcUAAAAD8kb9GXtwPNWiSCofIUE4iaKQcuaoQIpc65NZ+umYbbhdUTJPoVG5KUOwyMqGxLzpRiMNeP+io+kncJm4Oj8ZY</EncryptedPassword>
+    <_PublishTargetUrl>C:\Users\gus10\Desktop\web</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <File Include="api/Default.ashx">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/Bwl.Framework.dll">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/bwl.Network.ClientServer.dll">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/Bwl.SmartHome.Common.dll">
+      <publishTime>08/08/2017 14:55:11</publishTime>
+    </File>
+    <File Include="bin/Bwl.SmartHome.Server.WebASP.dll">
+      <publishTime>11/28/2017 15:16:12</publishTime>
+    </File>
+    <File Include="bin/Bwl.SmartHome.Server.WebASP.xml">
+      <publishTime>11/28/2017 15:16:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="control/control.css">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="control/control.js">
+      <publishTime>08/08/2017 21:10:39</publishTime>
+    </File>
+    <File Include="control/index.html">
+      <publishTime>10/14/2017 20:30:59</publishTime>
+    </File>
+    <File Include="control/plugins.css">
+      <publishTime>10/07/2017 23:02:02</publishTime>
+    </File>
+    <File Include="Default.aspx">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="libs/jquery-1.11.3.js">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="libs/jquery-1.11.3.min.js">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="libs/jquery.mobile-1.4.5.css">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="libs/jquery.mobile-1.4.5.js">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="libs/jquery.mobile-1.4.5.min.css">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="libs/jquery.mobile-1.4.5.min.js">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>08/08/2017 14:54:10</publishTime>
+    </File>
+    <File Include="PluginManager.aspx">
+      <publishTime>10/08/2017 17:24:36</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/08/2017 15:02:50</publishTime>
+    </File>
+  </ItemGroup>
 </Project>
