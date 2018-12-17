@@ -21,12 +21,21 @@ Partial Class ComputerControlForm
     'Не изменяйте ее в редакторе исходного кода.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim tTenSecond As System.Windows.Forms.Timer
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ComputerControlForm))
+        tTenSecond = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'logWriter
         '
         Me.logWriter.Location = New System.Drawing.Point(2, 53)
+        '
+        'tTenSecond
+        '
+        tTenSecond.Enabled = True
+        tTenSecond.Interval = 10000
+        AddHandler tTenSecond.Tick, AddressOf Me.tTenSecond_Tick
         '
         'ComputerControlForm
         '

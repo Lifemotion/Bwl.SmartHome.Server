@@ -62,4 +62,7 @@ Public Class ComputerControlForm
         End If
     End Sub
 
+    Private Sub tTenSecond_Tick(sender As Object, e As EventArgs)
+        _keyMon.Reload
+    End Sub
 End Class

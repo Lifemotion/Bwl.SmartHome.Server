@@ -6,15 +6,16 @@ Public Class Keymon
     Implements IDisposable
 
     Private WithEvents keyhook As KeyboardHookListener
+    Private _rulesPath As String
     Private _rules As New List(Of String)
     Private _client As SmartHomeClient
 
     Public Sub New(client As SmartHomeClient, rulesPath As String)
         _client = client
-        Try
-            _rules.AddRange(IO.File.ReadAllLines(rulesPath))
-        Catch ex As Exception
-        End Try
+        _rulesPath = rulesPath
+
+
+        Reload()
 
         If _rules.Count > 0 Then
             keyhook = New KeyboardHookListener(New GlobalHooker())
@@ -53,6 +54,14 @@ Public Class Keymon
         If e.KeyCode = Keys.LControlKey Then _control = False
     End Sub
 
+    Friend Sub Reload()
+        Try
+            _rules.Clear()
+            _rules.AddRange(IO.File.ReadAllLines(_rulesPath))
+        Catch ex As Exception
+        End Try
+    End Sub
+
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' Для определения избыточных вызовов
 
@@ -78,6 +87,8 @@ Public Class Keymon
         ' TODO: раскомментировать следующую строку, если Finalize() переопределен выше.
         ' GC.SuppressFinalize(Me)
     End Sub
+
+
 
 
 #End Region
